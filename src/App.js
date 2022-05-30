@@ -8,7 +8,7 @@ import { BrowserRouter, Route,Routes } from 'react-router-dom';
 // import Usuario from './componentes/Usuario';
 // import Unidad from './elementos/unidad';
 import Sidenavtor from './componentes/Sidenavtor';
-import Eliminar from './componentes/Eliminar';
+//import Eliminar from './componentes/Eliminar';
 import Editar from './componentes/Editar';
 import FormFile2 from './componentes/FormFile2';
 
@@ -30,10 +30,10 @@ function App() {
                 const id=props.match.params.id;
                 return <Editar id={id}/>
               }}/>
-              <Route exact path='/eliminar-usuario/:id'render={props=>{
+              {/* <Route exact path='/eliminar-usuario/:id'render={props=>{
                 const id=props.match.params.id;
                 return <Eliminar id={id}/>
-              }}/>
+              }}/> */}
             </Routes>                              
               <FormFile2/>
           </div>

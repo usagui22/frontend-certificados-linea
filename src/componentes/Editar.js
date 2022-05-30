@@ -4,7 +4,7 @@ export class editarUsuario extends Component {
     cajaNomRef=React
   render() {
     return (
-      <div>editarUsuario</div>
+      <div>editar Elemento seleccionado</div>
     )
   }
 }

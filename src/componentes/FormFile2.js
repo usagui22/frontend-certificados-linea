@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-//import { servicios } from "../conexiones/Servicios";
-import { API_REST } from "../conexiones/Conexion";
-import axios from "axios";
+import { servicios } from "../conexiones/Servicios";
+//import { API_REST } from "../conexiones/Conexion";
+//import axios from "axios";
 import { Button } from "react-bootstrap";
 
 const FormFile2=()=>{
@@ -19,11 +19,13 @@ const FormFile2=()=>{
         })
     }
     const enviarArchivo=()=>{
-        const url=API_REST.url;
+        //const url=API_REST.url;
         console.log("prueba de retorn");
-        axios.post(url+'/registrar-excel', file).then(res=>{
-           console.log(file)
-        });}
+        servicios.postFile(file);
+        // axios.post(url+'/registrar-excel', file).then(res=>{
+        //    console.log(file)
+        // });
+    }
     
     return(
         <div>
