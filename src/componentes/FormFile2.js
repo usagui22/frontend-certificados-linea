@@ -20,10 +20,14 @@ const FormFile2=()=>{
     }
     const enviarArchivo=()=>{
         const url=API_REST.url;
-        console.log("prueba de retorn");
-        axios.post(url+'/registrar-excel', file).then(res=>{
+        const body = {
+            excelb64: file
+        }
+        console.log("prueba de return");
+        axios.post(url+'/usuario/registrar-excel', body).then(res=>{
            console.log(file)
-        });}
+        }).catch(err => console.log(err))
+        ;}
     
     return(
         <div>
