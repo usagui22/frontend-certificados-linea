@@ -1,5 +1,6 @@
+import axios from "axios";
+//import {API_URL} from "../env.json"
 
-export const API_REST ={
-    url:'http://localhost:8080/',
-    
-}
+export const API = axios.create({
+    baseURL: "http://localhost:8080/",
+})

@@ -18,11 +18,13 @@ export const servicios ={
     ),
 
     getUnidades:()=>new Promise(
-        axios.get(API_REST.url+'/index-unidad')
+        axios.get(API_REST.url+'/listar-unidades')
         .then(res=>{
-            
-        })
-    )
 
+        })
+    ),
+    postLogin:()=>new Promise(
+        axios.post(API_REST)
+    )
 }
 

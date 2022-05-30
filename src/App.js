@@ -10,7 +10,7 @@ import { BrowserRouter, Route,Routes } from 'react-router-dom';
 import Sidenavtor from './componentes/Sidenavtor';
 //import Eliminar from './componentes/Eliminar';
 import Editar from './componentes/Editar';
-import FormFile2 from './componentes/FormFile2';
+//import FormFile2 from './componentes/FormFile2';
 
 function App() {
   return (
@@ -35,7 +35,7 @@ function App() {
                 return <Eliminar id={id}/>
               }}/> */}
             </Routes>                              
-              <FormFile2/>
+              {/* <FormFile2/> */}
           </div>
         </div>
         

@@ -1,35 +1,43 @@
 //import axios from 'axios';
 import React, { Component } from 'react';
 import { Button, Form} from 'react-bootstrap';
+import { API } from '../conexiones/Conexion';
 
 
 export default class Login extends Component {
-
-  state ={
-    user:[],
-    status:false
-  }
   
 
-  // handleSubmit= e => {
-  //   e.preventDefault();
-  //   const form = $(e.target);
-  //   console.log(form)
-  //   const data={
-  //     rol_usuario: this.nombre_rol,
-  //     password_usuario: this.pass_usuario
-  //   };
-  //   // console.log(data);
-  //   axios.post('Login',data).then(
-  //     res =>{
-  //       localStorage.setItem('token', res.data.token);
-  //     }
-  //   ).catch(
-  //     err => {
-  //       console.log(err);
-  //     }
-  //   )
-  // };
+  handleSubmit= async e => {
+    e.preventDefault();
+    // const form = e.target);
+    
+    const body={
+      correo: this.nombre_rol,
+      password: this.pass_usuario
+    };
+    console.log(body)
+    try {
+      const res = await API.post("auth/login", body );
+      
+      if(res.data.status){
+        console.log(res.data.msg)
+      }
+    } catch (error) {
+      console.log(error.response.data.msg)
+    }
+    
+
+    // console.log(data);
+    // axios.post('Login',data).then(
+    //   res =>{
+    //     localStorage.setItem('token', res.data.token);
+    //   }
+    // ).catch(
+    //   err => {
+    //     console.log(err);
+    //   }
+    // )
+  };
 
   render(){
     
@@ -39,7 +47,7 @@ export default class Login extends Component {
         method='post'
         onSubmit={this.handleSubmit}>
         
-        <Form.Label className='form-title'>LOGIN DE ROL / USUARIO</Form.Label>
+        <Form.Label className='form-title'>LOGIN DE USUARIO</Form.Label>
         
         <Form.Group >
           <Form.Label htmlFor="disabledTextInput">Nombre de Usuario: </Form.Label>
