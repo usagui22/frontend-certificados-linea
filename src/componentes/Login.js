@@ -12,7 +12,7 @@ export default class Login extends Component {
     // const form = e.target);
     
     const body={
-      correo: this.nombre_rol,
+      correo: this.nombre_usuario,
       password: this.pass_usuario
     };
     console.log(body)
@@ -26,17 +26,6 @@ export default class Login extends Component {
       console.log(error.response.data.msg)
     }
     
-
-    // console.log(data);
-    // axios.post('Login',data).then(
-    //   res =>{
-    //     localStorage.setItem('token', res.data.token);
-    //   }
-    // ).catch(
-    //   err => {
-    //     console.log(err);
-    //   }
-    // )
   };
 
   render(){
@@ -55,7 +44,7 @@ export default class Login extends Component {
               type={"text"} 
               placeholder="Ingrese Nombre Usuario" 
               id="login__user"
-              onChange={(e) => (this.nombre_rol = e.target.value)}
+              onChange={(e) => (this.nombre_usuario = e.target.value)}
               />
         </Form.Group>                    
 

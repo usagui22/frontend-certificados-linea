@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { ListGroup } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 export class Sidenavtor extends Component {
   render() {
@@ -7,12 +8,24 @@ export class Sidenavtor extends Component {
       <div>
         
         <ListGroup key={'xl'} horizontal={'xl'} className="rol-menu">
-            <ListGroup.Item>UNIDADES</ListGroup.Item>
-            <ListGroup.Item>EVENTOS</ListGroup.Item>
-            <ListGroup.Item>DOCUMENTOS</ListGroup.Item>
-            <ListGroup.Item>USUARIOS</ListGroup.Item>
-            <ListGroup.Item>PLANTILLAS</ListGroup.Item>
-            <ListGroup.Item>ROLES</ListGroup.Item>
+            <ListGroup.Item>
+            <Link to={"/Unidad"} className="text-dark text">UNIDADES</Link>
+            </ListGroup.Item>
+            <ListGroup.Item>
+            <Link to={"/Unidad"} className="text-dark text">EVENTOS</Link>
+            </ListGroup.Item>
+            <ListGroup.Item>
+            <Link to={"/Unidad"} className="text-dark text">DOCUMENTOS</Link>
+            </ListGroup.Item>
+            <ListGroup.Item>
+            <Link to={"/Unidad"} className="text-dark text">USUARIOS</Link>
+            </ListGroup.Item>
+            <ListGroup.Item>
+            <Link to={"/Unidad"} className="text-dark text">PLANTILLAS</Link>
+            </ListGroup.Item>
+            <ListGroup.Item>
+            <Link to={"/Unidad"} className="text-dark text">ROLES</Link>
+            </ListGroup.Item>
         </ListGroup>
       </div>
     )

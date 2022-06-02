@@ -1,77 +1,51 @@
-// import axios from 'axios';
-// import React, { Component, useState } from 'react'
-// import { Button, Form } from 'react-bootstrap'
-// import { API_REST } from '../conexiones/Conexion';
+import React, { useState } from "react";
+//import { servicios } from "../conexiones/Servicios";
+//import { API_REST } from "../conexiones/Conexion";
+//import axios from "axios";
+import { Button, FormControl, FormGroup, FormLabel } from "react-bootstrap";
+import { API } from "../conexiones/Conexion";
 
-// export class FormFile extends Component {
+
+const FormFile2=()=>{
+    const [file,setFile]=useState(null);
+    const [nombre, setName]=useState(null);
+
+    const convertirb64=(archivo)=>{
+        Array.from(archivo).forEach(archivo=>{
+            const reader =new FileReader();
+            reader.readAsDataURL(archivo);
+            reader.onload=function(){
+                
+                let base64 = reader.result;
+                console.log(base64);
+                setFile(base64);     
+                setName(archivo.name);
+            }            
+        })
+    }
+    const enviarArchivo=()=>{
+        // const url=API;
+        console.log("prueba de retorn", nombre);
+        // servicios.postFile(file, nombre);
+        // axios.post(url+'/registrar-excel', file).then(res=>{
+            const body = {
+                excelb64: file,
+                name:nombre
+            }
+            console.log("prueba de return");
+            API.post('/usuario/registrar-excel', body).then(res=>{
+            }).catch(err => console.log(err))
+        ;}
     
-//     cajaFileRef = React.createRef();
-//     cajaNombreRef=React.createRef();
+    return(
+        <div>
+            <FormGroup controlId="formFile" className="mb-3">
+            <FormLabel >Seleccione un archivo: </FormLabel>
+            <FormControl type={"file"} onChange={(e)=>convertirb64(e.target.files)}/>
+            <Button className="btn-enviar mt-2" onClick={enviarArchivo}>Enviar</Button>
+            </FormGroup>
+        </div>
+    );
+}
 
-//     state={        
-//         file:null,
-//         status:false
-//     }
-
-//     handleFile(e){
-//         let file = e.target.file;
-//         this.setState({file});
-//     }
-
-//     // handleUpload(e){
-//     //     let file =this.state.file;
-//     //     let formData = new FormData();
-
-//     //     formData.append("doc",file);
-//     //     // formData.append("name","Name");
-
-//     //     axios({
-//     //         url:API_REST.url,
-//     //         path:"/file",
-//     //         method:"POST",
-//     //         headers:{
-//     //             authorization:"el token esta aqui",                
-//     //         }, 
-//     //         data:formData,
-//     //     })
-//     //     .then(()=>{})
-//     //     .catch((err)=>{})
-//     // }
-
-//     nuevoFile=(e)=>{
-//         e.preventDefault();
-//         const nombreArchivo=this.cajaNombreRef.current.value;
-//         const file=this.cajaFileRef.current.value;
-//         const body = {}
-//         const url=API_REST.url;
-        
-//         axios.post(url+'/File', body).then(res=>{
-//            console.log(res.data)
-//         });
-//     }
-
-    
-//   render() {
-//       if(!this.state.status===true)    
-//     return (      
-//       <div> 
-//           <Form onSubmit={this.nuevoFile}>
-//             <Form.Label>Ingresar Multiples Usuarios</Form.Label>
-//             <Form.Group controlId='formNameSm' className="mb-3">
-//                 <Form.Label>Nombre Archivo</Form.Label>
-//                 <Form.Control type="text" placeholder="Enter nombre archivo" />
-//             </Form.Group>
-//             <Form.Group controlId="formFileSm" className="mb-3">
-//                 <Form.Label>Seleccionar Documento Excel </Form.Label>
-//                 <Form.Control 
-//                     type="file" 
-//                     size="sm" 
-//                     />
-//             </Form.Group>
-//             <Button className='btn btn-success' onClick={this.nuevoFile()}>Aceptar</Button>            
-//           </Form>
-//       </div>
-//     )
-//   }
-// }
-
+export default FormFile2;

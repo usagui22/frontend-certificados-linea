@@ -5,12 +5,14 @@ import Login from './componentes/Login';
 import Footer from './componentes/Footer';
 import Navigation from './componentes/Navigation';
 import { BrowserRouter, Route,Routes } from 'react-router-dom';
-// import Usuario from './componentes/Usuario';
-// import Unidad from './elementos/unidad';
+
 import Sidenavtor from './componentes/Sidenavtor';
-//import Eliminar from './componentes/Eliminar';
-import Editar from './componentes/Editar';
-//import FormFile2 from './componentes/FormFile2';
+import ListaUnidad from './pages/Unidad/ListaUnidad';
+
+// import FormFile2 from './componentes/FormFile';
+//import Fallas from './componentes/Fallas';
+import FormUnidad from './pages/Unidad/FormUnidad';
+
 
 function App() {
   return (
@@ -24,18 +26,11 @@ function App() {
             <Routes>
               <Route exact path='/' element={<Home/>}/>
               <Route exact path='/login' element={<Login/>}/>
-              {/* <Route exact path='/Unidad'element={<Unidad/>}/> */}
-              {/* <Route exact path='/Usuario'element={<Usuario/>}/> */}
-              <Route exact path='/editar-usuario/:id' render={props=>{
-                const id=props.match.params.id;
-                return <Editar id={id}/>
-              }}/>
-              {/* <Route exact path='/eliminar-usuario/:id'render={props=>{
-                const id=props.match.params.id;
-                return <Eliminar id={id}/>
-              }}/> */}
+              <Route exact path='/Unidad' element={<ListaUnidad/>}/>
+              <Route exact path='/formUnidad' element={<FormUnidad/>}/>
+              
             </Routes>                              
-              {/* <FormFile2/> */}
+              <FormFile2/>
           </div>
         </div>
         

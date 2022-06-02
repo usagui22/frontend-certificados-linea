@@ -1,10 +1,10 @@
 
 import axios from "axios";
-import { API_REST } from "./Conexion";
+import { API } from "./Conexion";
 
 export const servicios ={    
     postFile:(file)=> new Promise(
-        axios.post(API_REST.url+'/registrar-excel', file)
+        axios.post(API.url+'/registrar-excel', file)
         .then(req=>{
               console.log(file);
         })
@@ -18,13 +18,13 @@ export const servicios ={
     ),
 
     getUnidades:()=>new Promise(
-        axios.get(API_REST.url+'/listar-unidades')
+        axios.get(API.url+'/listar-unidades')
         .then(res=>{
-
+            
         })
     ),
     postLogin:()=>new Promise(
-        axios.post(API_REST)
+        axios.post(API)
     )
 }
 

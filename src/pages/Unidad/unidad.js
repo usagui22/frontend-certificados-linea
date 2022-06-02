@@ -3,7 +3,7 @@
 const nombre={
     etiqueta:"Nombre",
     tipo:"text",
-    name:"nombre",
+    mena:"nombre",
     pholder:"ingrese nombre de la unidad",
     mensajeErrorExpresion:"El campo solo puede contener caracteres alfabeticos",
     expresion:/^\w+[a-zA-ZÀ-ÿ\s]+$/,
@@ -12,7 +12,7 @@ const nombre={
 const abreviatura={
     etiqueta:"Abreviatura",
     tipo:"text",
-    name: "abreviatura", 
+    mena: "abreviatura", 
     pholder:"UDAU",
     mensajeErrorExpresion:"EL campo solo permite entre 4 a 8 letras en mayuscula",
     expresion:/^(F|U|D)[A-Z]{2,8}$/,
@@ -21,7 +21,7 @@ const abreviatura={
 const telefono={
     etiqueta: "Telefono",
     tipo:"text",
-    name: "telefono",     
+    mena: "telefono",     
     pholder:"+591-4-425359", 
     mensajeErrorExpresion:"El campo solo permite numeros 0-9 y los simbolos - +",
     expresion:/^\W?(591)[\s-]\d{1,3}([\s-]\d{1,7}){1,3}$/,
@@ -30,7 +30,7 @@ const telefono={
 const sitio_web={
     etiqueta:"Pagina Referencia",
     tipo:"text",
-    name: "pagina", 
+    mena: "pagina", 
     pholder:"http://dominio/pagina_principal",
     mensajeErrorExpresion:"El campo solo permiten caracteres alfanumericos y simbolos .-_/ ",
     expresion:/^(http+s?:\/\/)?(www\.)?[a-zA-Z.-]+\.[A-Za-z0-9./-]+$/,
@@ -39,7 +39,7 @@ const sitio_web={
 const correo={
     etiqueta:"Correo Contacto",
     tipo:"email",
-    name: "correo", 
+    mena: "correo", 
     pholder:"correo@correo.com",
     mensajeErrorExpresion:"EL campo solo permite caracteres alfanumericos y simbolos .-_@",
     expresion:/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
@@ -48,7 +48,7 @@ const correo={
 const telefono_alternativo={
     etiqueta:"Telefono alternativo",
     tipo:"text",
-    name: "telefono2", 
+    mena: "telefono2", 
     pholder:"+591-4-425359",
     mensajeErrorExpresion: "El campo solo permite numeros 0-9 y los simbolos - +",
     expresion:/^(\W?(591)[\s-])?\d{1,3}([\s-]\d{1,7}){1,3}$/,
@@ -57,7 +57,7 @@ const telefono_alternativo={
 const direccion={
     etiqueta:"Ubicacion ",
     tipo:"text",
-    name: "ubicacion", 
+    mena: "ubicacion", 
     pholder:"Oquendo esq. Jordan Nro.225", 
     mensajeErrorExpresion:"El campo solo permite caracteres alfanumericos y simbolos ./:",
     expresion: /^[A-Za-z0-9]+[+a-zA-Z0-9\s,]+\.?[A-Za-z\s.,]+$/,
@@ -66,12 +66,13 @@ const direccion={
 const responsable={
     etiqueta:"Responsable de Unidad",
     tipo:"select",
-    name:"responsable",
+    mena:"responsable",
     pholder:"seleccione usuario",
     // opciones:{lista_usuarios}
 }
-const atributos=[
-        nombre,abreviatura,
+const atributosUnidad=[
+        nombre,
+        abreviatura,
         telefono,
         sitio_web,        
         correo,
@@ -80,4 +81,4 @@ const atributos=[
         responsable
     ]
 
-export default atributos;
+export default atributosUnidad;
