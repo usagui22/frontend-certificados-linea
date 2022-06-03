@@ -1,72 +1,80 @@
 
 
 const nombre={
+    id:"1",
     etiqueta:"Nombre",
     tipo:"text",
-    mena:"nombre",
+    name:"nombre",
     pholder:"ingrese nombre de la unidad",
-    mensajeErrorExpresion:"El campo solo puede contener caracteres alfabeticos",
+    mensaje:"El campo solo puede contener caracteres alfabeticos",
     expresion:/^\w+[a-zA-ZÀ-ÿ\s]+$/,
-    valorInicial:""
+    // valorInicial:""
 }
 const abreviatura={
+    id:"2",
     etiqueta:"Abreviatura",
     tipo:"text",
-    mena: "abreviatura", 
+    name: "abreviatura", 
     pholder:"UDAU",
-    mensajeErrorExpresion:"EL campo solo permite entre 4 a 8 letras en mayuscula",
+    mensaje:"EL campo solo permite entre 4 a 8 letras en mayuscula",
     expresion:/^(F|U|D)[A-Z]{2,8}$/,
-    valorInicial:""
+    //valorInicial:""
 }
 const telefono={
+    id:"3",
     etiqueta: "Telefono",
     tipo:"text",
-    mena: "telefono",     
+    name: "telefono",     
     pholder:"+591-4-425359", 
-    mensajeErrorExpresion:"El campo solo permite numeros 0-9 y los simbolos - +",
+    mensaje:"El campo solo permite numeros 0-9 y los simbolos - +",
     expresion:/^\W?(591)[\s-]\d{1,3}([\s-]\d{1,7}){1,3}$/,
-    valorInicial:""
+    //valorInicial:""
 }
 const sitio_web={
+    id:"4",
     etiqueta:"Pagina Referencia",
     tipo:"text",
-    mena: "pagina", 
+    name: "sitio_web", 
     pholder:"http://dominio/pagina_principal",
-    mensajeErrorExpresion:"El campo solo permiten caracteres alfanumericos y simbolos .-_/ ",
+    mensaje:"El campo solo permiten caracteres alfanumericos y simbolos .-_/ ",
     expresion:/^(http+s?:\/\/)?(www\.)?[a-zA-Z.-]+\.[A-Za-z0-9./-]+$/,
-    valorInicial:""
+    //valorInicial:""
 }
 const correo={
+    id:"5",
     etiqueta:"Correo Contacto",
     tipo:"email",
-    mena: "correo", 
+    name: "correo", 
     pholder:"correo@correo.com",
-    mensajeErrorExpresion:"EL campo solo permite caracteres alfanumericos y simbolos .-_@",
+    mensaje:"EL campo solo permite caracteres alfanumericos y simbolos .-_@",
     expresion:/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-    valorInicial:""
+    //valorInicial:""
 }
 const telefono_alternativo={
+    id:"6",
     etiqueta:"Telefono alternativo",
     tipo:"text",
-    mena: "telefono2", 
+    name: "telefono_alternativo", 
     pholder:"+591-4-425359",
-    mensajeErrorExpresion: "El campo solo permite numeros 0-9 y los simbolos - +",
+    mensaje: "El campo solo permite numeros 0-9 y los simbolos - +",
     expresion:/^(\W?(591)[\s-])?\d{1,3}([\s-]\d{1,7}){1,3}$/,
-    valorInicial:""
+    //valorInicial:""
 }
 const direccion={
+    id:"7",
     etiqueta:"Ubicacion ",
     tipo:"text",
-    mena: "ubicacion", 
+    name: "direccion", 
     pholder:"Oquendo esq. Jordan Nro.225", 
-    mensajeErrorExpresion:"El campo solo permite caracteres alfanumericos y simbolos ./:",
+    mensaje:"El campo solo permite caracteres alfanumericos y simbolos ./:",
     expresion: /^[A-Za-z0-9]+[+a-zA-Z0-9\s,]+\.?[A-Za-z\s.,]+$/,
-    valorInicial:""
+    //valorInicial:""
 }
 const responsable={
+    id:"8",
     etiqueta:"Responsable de Unidad",
     tipo:"select",
-    mena:"responsable",
+    name:"responsable",
     pholder:"seleccione usuario",
     // opciones:{lista_usuarios}
 }

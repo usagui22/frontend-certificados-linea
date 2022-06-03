@@ -11,7 +11,11 @@ import ListaUnidad from './pages/Unidad/ListaUnidad';
 
 // import FormFile2 from './componentes/FormFile';
 //import Fallas from './componentes/Fallas';
-import FormUnidad from './pages/Unidad/FormUnidad';
+
+import FormUni from './pages/Unidad/FormUni';
+//import FormUnidad from './pages/Unidad/FormUnidad';
+//import FormFormik from './componentes/FormFormik';
+//import FormFile2 from './componentes/FormFile';
 
 
 function App() {
@@ -27,10 +31,10 @@ function App() {
               <Route exact path='/' element={<Home/>}/>
               <Route exact path='/login' element={<Login/>}/>
               <Route exact path='/Unidad' element={<ListaUnidad/>}/>
-              <Route exact path='/formUnidad' element={<FormUnidad/>}/>
+              <Route exact path='/formUnidad' element={<FormUni/>}/>
               
-            </Routes>                              
-              <FormFile2/>
+            </Routes>    
+            {/* <FormFormik/>                           */}
           </div>
         </div>
         

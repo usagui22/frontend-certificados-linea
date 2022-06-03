@@ -30,7 +30,6 @@ body, html, .App, #root, .auth-wrapper {
   text-decoration: none;
   color:#fff;  
   padding: auto;  
-  margin-inline-start: 10px;  
 }
 
 .nav-links .nav-link {
@@ -38,13 +37,26 @@ body, html, .App, #root, .auth-wrapper {
   text-decoration-color: #fff;
   text-decoration: none;
 }
-
+.menu-bar{
+  display: none;
+}
 .rol-menu{
   display: flex;
   justify-content: center;  
   text-decoration-color: black;
   align-items: center;
   padding-top: 5rem;  
+}
+@media screen and(max-width:800px){
+  .rol-menu{
+    width: 25%;
+    height: 75%;
+    margin: 0;
+    position: fixed;
+  }
+}
+.caja-item:hover{
+  background-color: #167bff;
 }
 
 .item{
@@ -65,6 +77,12 @@ body, html, .App, #root, .auth-wrapper {
     padding: 40px 55px 45px 55px;
     border-radius: 15px;
     transition: all .3s;    
+    justify-content: center;
+}
+
+.auth-inner, .inputs-formulario{
+  align-items: center;
+  justify-items: center;
 }
 
 .auth-wrapper .form-control:focus {
@@ -127,8 +145,17 @@ body, html, .App, #root, .auth-wrapper {
 }
 
 .btn-crear{
-  padding: 15px;  
-  
+  padding: 15px;    
+  display: flex;
+	flex-direction: column;
+	align-items: center;
+	grid-column: span 2;
+	
+}
+@media (max-width: 800px){
+  .btn-crear{
+    grid-column: span 1;
+  }
 }
 
 .text{
@@ -137,4 +164,27 @@ body, html, .App, #root, .auth-wrapper {
 
 .Button{
   background-color: #003770;
+}
+.mensaje-error {
+  position: block;
+  text-decoration-color: red;
+  font-size: 6rem;
+  padding: 15px;
+  margin: 10px;
+}
+
+.inputs-items{
+  justify-content: center;
+  position: initial;  
+}
+
+.inputs-formulario{
+  display: grid;  
+	grid-template-columns: 1fr 1fr;
+	gap: 20px;	
+}
+@media screen and (max-width: 800px){
+  .inputs-formulario{
+    grid-template-columns: 1fr;
+  }  
 }

@@ -1,0 +1,19 @@
+const atributosUsuario={
+    nombres,
+    apellido_paterno,
+    apellido_materno,
+    genero,
+    fecha_nacimiento,
+    lugar_nacimiento,
+    direccion_actual,
+    ocupacion,
+    correo,
+    correo_alternativo,
+    telefono,
+    celular,
+    ci,
+    lugar_expedito_ci,
+    imagen,
+    estado_civil,
+    passwor_hash
+}

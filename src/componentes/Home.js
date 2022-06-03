@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { Component } from 'react';
+import FormFormik from './FormFormik';
 
 export default class Home extends Component {
   
@@ -27,12 +28,20 @@ export default class Home extends Component {
 
   render() {
     if(this.state.user){
-      return(
+      return(<>
+      
         <h2>Hi {this.user.nombre_usuario}</h2>
+        <FormFormik/>
+      </>
+
+
       )
     }
-    return (        
-      <h3>Estas en Home</h3>        
+    return (     
+      <>
+      <h3>Estas en Home</h3>   
+      </>   
+
     )
   }
 }
