@@ -22,7 +22,7 @@ import { SeleccionarUsuario } from './pages/Resposables/SeleccionarUsuario';
 import { FormUsuario } from './pages/Usuario/FormUsuario';
 import { FormEvento } from './pages/Evento/FormEvento';
 import { FormDocumento } from './pages/Documento/FormDocumento';
-import FormFile2 from './componentes/FormFile';
+import FormFile2 from './pages/Usuario/FormFile';
 //import FormUnidad from './pages/Unidad/FormUnidad';
 //import FormFormik from './componentes/FormFormik';
 

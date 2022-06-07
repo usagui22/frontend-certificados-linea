@@ -3,7 +3,7 @@ import React, { useState } from "react";
 //import { API_REST } from "../conexiones/Conexion";
 //import axios from "axios";
 import { Button, FormControl, FormGroup, FormLabel } from "react-bootstrap";
-import { API } from "../conexiones/Conexion";
+import { API } from "../../conexiones/Conexion";
 
 
 const FormFile2=()=>{
