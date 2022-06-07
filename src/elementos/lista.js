@@ -4,7 +4,7 @@ import { Button } from 'react-bootstrap';
 import { Link, NavLink } from 'react-router-dom';
 import { FormFile } from '../componentes/FormFile';
 
-export class lista extends PureComponent {
+export default class lista extends PureComponent {
     state={
         usuario:[],
         status:false
@@ -72,4 +72,3 @@ export class lista extends PureComponent {
   }
 }
 
-export default listaUsuario

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 //import FieldContent from '../../componentes/FieldContent';
 import { Button } from 'react-bootstrap';
-import atributosUnidad from './unidad';
+import atributosUnidad from '../pages/Unidad/unidad';
 import { FormikProvider,Form, useFormikContext } from 'formik';
 import { TextField } from '@mui/material';
 //import { API } from '../../conexiones/Conexion';

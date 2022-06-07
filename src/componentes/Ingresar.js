@@ -36,7 +36,7 @@ export default class Login extends Component {
         method='post'
         onSubmit={this.handleSubmit}>
         
-        <Form.Label className='form-title'>LOGIN DE USUARIO</Form.Label>
+        <Form.Label className='form-title'>INGRESAR USUARIO</Form.Label>
         
         <Form.Group >
           <Form.Label htmlFor="disabledTextInput">Nombre de Usuario: </Form.Label>

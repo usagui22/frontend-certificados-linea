@@ -38,6 +38,10 @@ const FormFile2=()=>{
         ;}
     
     return(
+        <>
+        <div>
+            <h3>Crear Usuarios en Archivo</h3>
+        </div>
         <div>
             <FormGroup controlId="formFile" className="mb-3">
             <FormLabel >Seleccione un archivo: </FormLabel>
@@ -45,6 +49,7 @@ const FormFile2=()=>{
             <Button className="btn-enviar mt-2" onClick={enviarArchivo}>Enviar</Button>
             </FormGroup>
         </div>
+        </>
     );
 }
 

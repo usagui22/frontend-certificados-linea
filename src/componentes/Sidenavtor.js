@@ -15,19 +15,19 @@ export class Sidenavtor extends Component {
             <Link to={"/Unidad"} className="text-dark text ">UNIDADES</Link>
             </ListGroup.Item>
             <ListGroup.Item className='caja-item'>
-            <Link to={"/Unidad"} className="text-dark text">EVENTOS</Link>
+            <Link to={"/Evento"} className="text-dark text">EVENTOS</Link>
             </ListGroup.Item>
             <ListGroup.Item className='caja-item'>
-            <Link to={"/Unidad"} className="text-dark text">DOCUMENTOS</Link>
+            <Link to={"/Documento"} className="text-dark text">CERTIFICADOS</Link>
             </ListGroup.Item>
             <ListGroup.Item className='caja-item'>
-            <Link to={"/Unidad"} className="text-dark text">USUARIOS</Link>
+            <Link to={"/Usuario"} className="text-dark text">USUARIOS</Link>
             </ListGroup.Item>
             <ListGroup.Item className='caja-item'>
-            <Link to={"/Unidad"} className="text-dark text">PLANTILLAS</Link>
+            <Link to={"/Plantilla"} className="text-dark text">PLANTILLAS</Link>
             </ListGroup.Item>
             <ListGroup.Item className='caja-item'>
-            <Link to={"/Unidad"} className="text-dark text">ROLES</Link>
+            <Link to={"/Roles"} className="text-dark text">RESPONSABLES</Link>
             </ListGroup.Item>
         </ListGroup>
       </div>

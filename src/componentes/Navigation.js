@@ -15,9 +15,9 @@ export default class Navigation extends Component {
                 <Logo/>
                 </div>
                 <Nav className='ml-auto navbar-nav nav-links'>                    
-                    <Link className='nav-link text-white' to="/Login">Login</Link>
+                    <Link className='nav-link text-white' to="/Ingresar">Ingresar</Link>
                     {/* <Link className='nav-link text-white' to="/Logout">Logout</Link> */}
-                    <Link className='nav-link text-white' to="/Logout">Sign In</Link>
+                    {/* <Link className='nav-link text-white' to="/Registrarse">Registrarse</Link> */}
                 </Nav>
 
             </Container>

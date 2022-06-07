@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import FieldContent from '../../componentes/FieldContent';
 import { Form, Button, FormText } from 'react-bootstrap';
 import { API } from '../../conexiones/Conexion';
-import atributosUnidad from './unidad';
 
 export default function FormUni (){    
 
@@ -15,10 +14,6 @@ const [telefono_alternativo,setTelefono_Alternativo]=useState({campo:"",valido:n
 const [direccion,setDireccion]=useState({campo:"",valido:null});
 const [responsable,setResponsable]=useState({campo:"",valido:null});
 const [formularioValido,setValido]=useState(null);
-
-const etiquetas=[atributosUnidad.map((atributo)=>(
-    atributo.etiqueta
-))]
 
 const expresiones={
     nombre:/^\w+[a-zA-ZÀ-ÿ\s]+$/,

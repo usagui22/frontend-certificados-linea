@@ -54,8 +54,7 @@ export default class ListaUnidad extends Component{
             <th>Correo Contacto</th>
             <th>Telefono Alternativo</th>
             <th>Responsable</th>      
-            <th></th>      
-            
+            <th>Opciones</th>                  
           </tr>
         </thead>
         <tbody>
