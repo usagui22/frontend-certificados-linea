@@ -1,18 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import QRCode from "react-qr-code";
-import { HashRouter } from "react-router-dom";
+// import { HashRouter } from "react-router-dom";
+// import fondoUmss from '../assets/imagenes/logoUMSS.png'
 
-export const QrWithHash =()=>{
+export const QrWithHash =(valor)=>{
+    const [llave, setLlave]=useState('');
+
+    function generarQR(){
+        setLlave({valor})
+    }
+
     return(
         <>
         <div>
             <QRCode
-                title="qr-verificacion"
+                title="qr-verificacion"                
                 bgColor="white"
                 fgColor="black"
-                size={250}
+                size={100}
+                value={llave}
             />
+            {/* <img src={fondoUmss} className="col-sm-1"/> */}
             
+            <p>{llave}</p>            
         </div>
         </>
     );

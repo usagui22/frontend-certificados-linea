@@ -1,62 +1,110 @@
-// import { Document, Image, Page } from "@react-pdf/renderer";
-import React from "react";
+import React, { Component } from "react";
 import { Button, ButtonGroup, Image } from "react-bootstrap";
-import { atributosUsuario } from "../Usuario/usuario";
+//import { atributosUsuario } from "../Usuario/usuario";
 //import atributosDocumento from './documento';
-import image_fondo from "../../elementos/imagenes/certificado_blanco.jpeg";
-import codigoQR from "../../elementos/imagenes/QRCodeOther.jpg";
+import image_fondo from "../../assets/imagenes/Certificado.png";
+import fondoUMSS from "../../assets/imagenes/logoUMSS.png";
+import jsPDF from "jspdf";
+import { QrWithHash } from "../../componentes/Qr-hash";
+import html2canvas from "html2canvas";
 //import atributosEvento from "../Evento/evento";
 
-const fondo= image_fondo;//ruta de imagen
+// const fondo= image_fondo;//ruta de imagen
 
-export const Certificado =()=>{
+export  class Certificado extends Component{
+   constructor(props){
+       super(props)
+       this.state={ 
+        nombre_evento: "Curso de Desarrollo y Emision de Programas Moviles",//atributosEvento.nombre;
     
-    const nombre_evento= "Curso de Desarrollo y Emision de Programas Moviles";//atributosEvento.nombre;
-
-    const descripcion="En reconocimiento por su aprobacion dentro las actividades del evento mencionado.Iniciando en fecha 23-05-2022 al 29-05-2022";//atributosDocumento.descripcion;
+        descripcion:"En reconocimiento por su aprobacion dentro las actividades del evento mencionado.",//atributosDocumento.descripcion;
+        
+        datosUsuario:{        
+            nombres:"Gabriel",
+            apellido_paterno:"Torrez", 
+            apellido_materno:"Cespedes"
+        }
+    }
+   }
     
-    const nombre=[        
-        atributosUsuario.nombres,
-        atributosUsuario.apellido_paterno, 
-        atributosUsuario.apellido_materno
-    ];
+    
+    generarPDF=()=>{
+        
+        let doc=new jsPDF("l","pt","letter");
+        const contenido=document.getElementById("contenido");
 
-    function generarQR(){
+        html2canvas(contenido)
+        .then((canvas)=>{
+            const imgData=canvas.toDataURL('image/png')
+            doc.addImage(image_fondo,'PNG',0,0)
+            doc.addImage(imgData,'PNG',1,1);
+            doc.save("pdf-prueba.pdf");
+        })
+       
+        
+    }
+
+    guardarFecha=()=>{
+        console.log("guardarFecha");
 
     }
-    const qr={generarQR};
+
+    // generarAlerta=()=>{
+    //     console.log("generar Alerta");
+    // }
+
+    // compartirPDF=()=>{
+    //     console.log("Compartir Enlace");
+    // }}
+    // const qr={generarQR};
+    render(){
     return(
-        <>
-        <div className="md " bg-img={fondo} bg-sz="cover">        
-            
-            <div className="titulo-certificado justify-content-center" >
-                <h3>{nombre_evento}</h3>   
-                <h1>CERTIFICADO</h1>   
-            </div>
-            <div className="contenido-certificado">
-                <p>{descripcion}</p>
-            </div>
-            <div className="container ">
+        
+        <div bg-sz="cover" className="container mw-50 mh-75">    
+        
+            <div id="contenido" >
+                <div className="titulo-certificado " >
                 
-                <div className="codigo-certificado col-sm-4">
-                    <Image src={codigoQR} className="rounded float-start h-25 w-25 p-3"/>
+                    <Image src={fondoUMSS} className="col-sm-1 float-end"/>
+                    <h5>
+                        {this.state.nombre_evento}                        
+                    </h5>
+                    <h1>CERTIFICADO</h1>   
+                    
+                </div>            
+                            
+                <div className="contenido-certificado">
+                    <h5>                        
+                         {this.state.datosUsuario.apellido_paterno} 
+                         {this.state.datosUsuario.apellido_materno}                        
+                         {this.state.datosUsuario.nombres} 
+                    </h5>
+                    <h6>
+                        {this.state.descripcion}                    
+                    </h6>
                 </div>
+                <div className="container codigo-certificado">
+                    
+                    <div className="col-sm-4">
+                        {/* codigos QR */}
+                        {/* <Image src={codigoQR} className="rounded float-start h-50 w-50 p-3"/> */}
+                        <QrWithHash valor="UMSS"/>                        
+                    </div>                                        
                 
-                {/* <div className="botones-certificado row col-sm-4">
-                    <Button>Descargar</Button>
-                    <Button>Confirmar Datos</Button>
-                    <Button>Corregir</Button>
-                </div> */}
-                <div>
-            <ButtonGroup className=" col mb-2 float-end">
-                <Button>Descargar</Button>
-                <Button>Confirmar</Button>
-                <Button>Reportar</Button>
+                </div>
+            </div>
+            {/* <img src={fondo} className="w-50 h-75 img-fluid" alt="Max-width 100%"/>     */}
+            <div className="float-end">
+            <ButtonGroup className=" col mb-2">
+                <Button onClick={this.generarPDF}>Descargar</Button>
+                <Button onClick={this.guardarFecha}>Confirmar</Button>
+                {/* <Button onClick={this.generarAlerta}>Reportar</Button> */}
+                {/* <Button onClick={this.compartirPDF}>Compartir</Button> */}
             </ButtonGroup>
             </div>
-            </div>
-        </div>
-        </>
+        </div> 
+        
     );
-    
+
+    }
 }

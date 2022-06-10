@@ -47,7 +47,7 @@ body, html, .App, #root, .auth-wrapper {
   align-items: center;
   padding-top: 5rem;  
 }
-@media screen and(max-width:800px){
+@media screen and (max-width:800px){
   .rol-menu{
     width: 25%;
     height: 75%;
@@ -78,6 +78,7 @@ body, html, .App, #root, .auth-wrapper {
     border-radius: 15px;
     transition: all .3s;    
     justify-content: center;
+    
 }
 
 .auth-inner, .inputs-formulario{

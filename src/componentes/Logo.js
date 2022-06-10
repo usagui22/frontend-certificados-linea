@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Figure } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import imagen from '../elementos/imagenes/marcaHorizontal-02.png';
+import imagen from '../assets/imagenes/marcaHorizontal-02.png';
 
 function Logo() {
   return (

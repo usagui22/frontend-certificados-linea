@@ -1,47 +1,55 @@
-import axios from 'axios';
-import React, { Component } from 'react';
-import FormFormik from './FormFormik';
+// import axios from 'axios';
+import React from 'react';
+//import FormFormik from './FormFormik';
+//import { Torta } from './GraficaTorta';
 
-export default class Home extends Component {
+
+ const Home =()=>{
   
-  state = {};
+  // function cargarHome() {
   
-  componentDidMount(){
-    const config = {
-        headers:{
-          Authorization: 'Bearer' + localStorage.getItem('token')
-        }
-    };
+  //   const config = {
+  //       headers:{
+  //         Authorization: 'Bearer' + localStorage.getItem('token')
+  //       }
+  //   };
 
-    axios.get('user',config).then(
-      res =>{
-        // console.log(res);
-        this.setState({
-          user:res.data
-        });
-      },
-      err =>{
-        console.log(err);
-      }
-    )
-  }
+  //   axios.get('user',config).then(
+  //     res =>{
+  //       // console.log(res);
+  //       this.setState({
+  //         user:res.data
+  //       });
+  //     },
+  //     err =>{
+  //       console.log(err);
+  //     }
+  //   )
+  // }
 
-  render() {
-    if(this.state.user){
-      return(<>
+  // render() {
+    // if(this.state.user){
+    //   return(<>
       
-        <h2>Hi {this.user.nombre_usuario}</h2>
-        <FormFormik/>
-      </>
+    //     <h2>Hi {this.user.nombre_usuario}</h2>
+    //     <FormFormik/>
+    //   </>
 
 
-      )
-    }
+    //   )
+    // }
     return (     
       <>
-      <h3>Estas en Home</h3>   
+      <div>
+        <h3>Ejemplo de Graficas para Admin</h3>
+      </div>
+      <div>
+        {/* <Torta/> */}
+      </div>
       </>   
 
-    )
-  }
+    );
+  // }
 }
+
+export default Home;
