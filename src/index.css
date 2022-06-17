@@ -29,7 +29,7 @@ body, html, .App, #root, .auth-wrapper {
 .nav-brand {
   text-decoration: none;
   color:#fff;  
-  padding: auto;  
+  /* padding: 10px;   */
 }
 
 .nav-links .nav-link {
@@ -38,29 +38,41 @@ body, html, .App, #root, .auth-wrapper {
   text-decoration: none;
 }
 .menu-bar{
-  display: none;
+  display: block;
+
 }
 .rol-menu{
-  display: flex;
+  display: block;
   justify-content: center;  
-  text-decoration-color: black;
+  /* text-decoration-color: #fff; */
   align-items: center;
-  padding-top: 5rem;  
+  padding-top: 80px;  
 }
-@media screen and (max-width:800px){
-  .rol-menu{
-    width: 25%;
-    height: 75%;
-    margin: 0;
+.list-group-item+.list-group-item,
+.list-group-item:first-child{    
+  background-color: #003770;  
+}
+@media screen and (max-width:1200px){
+  .rol-menu{    
+    display: block;
+    padding-top: 30px;
+    margin: 60px;
     position: fixed;
+    background-color: #003770;
+  }
+  .list-group-item+.list-group-item,
+  .list-group-item:first-child{    
+    background-color: #003770;
+    
   }
 }
 .caja-item:hover{
   background-color: #167bff;
+  padding: auto;
 }
 
-.item{
-  background-color: #fff;  
+.item .list-group .item{
+  background-color: #003770;  
 }
 
 .auth-wrapper {
@@ -77,13 +89,7 @@ body, html, .App, #root, .auth-wrapper {
     padding: 40px 55px 45px 55px;
     border-radius: 15px;
     transition: all .3s;    
-    justify-content: center;
-    
-}
-
-.auth-inner, .inputs-formulario{
-  align-items: center;
-  justify-items: center;
+    justify-content: center;    
 }
 
 .auth-wrapper .form-control:focus {
@@ -161,6 +167,7 @@ body, html, .App, #root, .auth-wrapper {
 
 .text{
   text-decoration: none;  
+  
 }
 
 .Button{
@@ -173,19 +180,21 @@ body, html, .App, #root, .auth-wrapper {
   padding: 15px;
   margin: 10px;
 }
-
+/* 
 .inputs-items{
   justify-content: center;
   position: initial;  
-}
+} */
 
-.inputs-formulario{
+.formulario{
   display: grid;  
 	grid-template-columns: 1fr 1fr;
-	gap: 20px;	
+	/* gap: 20px;	 */
+
 }
 @media screen and (max-width: 800px){
-  .inputs-formulario{
+  .formulario{
     grid-template-columns: 1fr;
   }  
 }
+

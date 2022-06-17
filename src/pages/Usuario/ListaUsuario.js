@@ -1,9 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { API } from "../../conexiones/Conexion";
 
-export const ListaUsuario=()=>{
-    return(
+export const ListaUsuario = () => {
+  const [usuario, setUsuario] = useState([])
+
+  const cargarUsuarios = async () =>{
+    let path="usuario/listar-usuario";
+    try {
+      const res = await API.get(path)
+        setUsuario(res.data)
+    } catch (error) {
+      console.log("No se encuentran usuarios registrados");
+    }
+  }
+
+  useEffect(() => {
+    cargarUsuarios()
+  }, [])
+
+  return(
         <>
         {/* <Lista titulos={etiquetas}/> */}
         <>
@@ -26,27 +43,33 @@ export const ListaUsuario=()=>{
             <th>#</th>
             <th>Nombres</th>
             <th>Apellido Paterno</th>
-            <th>Apellido Materno</th>
-            <th>Ocupacion</th>
+            <th>Apellido Materno</th>            
             <th>Correo Electronico</th>            
-            <th>Opciones</th>   
+            
           </tr>
         </thead>
         <tbody>
-          {/* { plantilla.map((pla, k)=>{
-            <tr key={k}>
-              <td>{pla.id}</td>
-              <td>{pla.nombre}</td>
-              <td>{pla.descripcion}</td>
-              <td>{pla.plantilla}</td>
+          {usuario.map((usu)=>{
+            return(<tr key={usu.id} >
+              <td>{usu.id}</td>
+              <td>{usu.nombres}</td>
+              <td>{usu.apellido_paterno}</td>
+              <td>{usu.apellido_materno}</td>
+              <td>{usu.correo}</td>              
               <td>
-
-              </td>
-              <td>
-
+                
+                <Button >
+                  <Link className="text-light text" to={"/editarUsuario"}>Editar</Link>                      
+                </Button>   
+                </td>                           
+                <td>
+                <Button className="ml-2">
+                  <Link className="text-light text" to={"/eliminarUsuario"}>Eliminar</Link>                      
+                </Button>                
+              
               </td>              
-            </tr>
-          })} */}
+            </tr>)
+          })}
         </tbody>
       </Table>
       </div>

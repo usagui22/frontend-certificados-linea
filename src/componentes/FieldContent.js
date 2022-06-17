@@ -24,7 +24,7 @@ import { FormControl, FormGroup, FormLabel, FormText } from "react-bootstrap";
     }
 
     return(
-        <div className="col-sm-6 ">
+        <div className="col-sm-6">
             <FormLabel htmlFor={name} className={estado.valido==='false'?'is-invalid':null}>{etiqueta} :</FormLabel>
             <FormGroup>
                 <FormControl                                        

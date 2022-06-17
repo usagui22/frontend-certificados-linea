@@ -1,36 +1,26 @@
 
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { API } from '../../conexiones/Conexion';
 
-export default class ListaUnidad extends Component{
-  
-  state={
-    unidad:[],
-    status:false
-  }
+const ListaUnidad = () =>{
+  const [unidad,setUnidad]=useState([]);
 
-  cargarUnidades=async e=>{
-    let path="/listar-unidades";
-
+  const cargarUnidades = async ()=>{
+    let path="unidad/ver-unidades";
       try {
-        await API.get(path).then(res=>{
-          this.state({
-            unidad:res.data
-            ,status:true
-          });
-        })
+        const res= await API.get(path)
+          setUnidad(res.data)
       } catch (error) {
-        console.log("No se encuentran elementos en la entidad")
+        console.log("No se encuentran unidades registradas")
       }
   }
 
-  componentDidMount=()=>{
-    this.cargarUnidades();
-  }
+  useEffect(()=>{
+    cargarUnidades()
+  },[]);
 
-  render(){
     return (      
       <>
       <div className='titulo'>
@@ -52,31 +42,39 @@ export default class ListaUnidad extends Component{
             <th>Telefono</th>
             <th>Pagina de Referencia</th>
             <th>Correo Contacto</th>
-            <th>Telefono Alternativo</th>
-            <th>Responsable</th>      
-            <th>Opciones</th>                  
+            <th>Telefono Alternativo</th>            
           </tr>
         </thead>
         <tbody>
-          { this.state.unidad.map((uni, k)=>{
-            <tr key={k}>
+          {unidad.map((uni)=>{
+            return( <tr key={uni.id}>
               <td>{uni.id}</td>
               <td>{uni.nombre}</td>
               <td>{uni.abreviatura}</td>
               <td>{uni.telefono}</td>
               <td>{uni.url_convocatoria}</td>
               <td>{uni.correo}</td>
-              <td>{uni.telefono_alternativo}</td>
-              <td>{uni.responsable}</td>
-              
-            </tr>
+              <td>{uni.telefono_alternativo}</td>              
+              <td>
+                <Button>
+                  <Link to={"/editarUnidad"}>Editar</Link>                      
+                </Button>                 
+              </td>              
+              <td>
+                <Button>
+                  <Link to={"/eliminarUnidad"}>Eliminar</Link>                      
+                </Button>                
+              </td>  
+            </tr>)
           })}
         </tbody>
       </Table>
       </div>
       </>
     );
-  }
+
 }
+
+export default ListaUnidad;
 
 

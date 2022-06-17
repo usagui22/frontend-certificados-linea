@@ -3,6 +3,7 @@ import FieldContent from '../../componentes/FieldContent';
 import { Form, Button, FormText } from 'react-bootstrap';
 import { API } from '../../conexiones/Conexion';
 
+
 export default function FormUni (){    
 
 const [nombre,setNombre]=useState({campo:"",valido:null});
@@ -12,8 +13,9 @@ const [sitio_web,setSitio_Web]=useState({campo:"",valido:null});
 const [correo,setCorreo]=useState({campo:"",valido:null});
 const [telefono_alternativo,setTelefono_Alternativo]=useState({campo:"",valido:null});
 const [direccion,setDireccion]=useState({campo:"",valido:null});
-const [responsable,setResponsable]=useState({campo:"",valido:null});
+
 const [formularioValido,setValido]=useState(null);
+
 
 const expresiones={
     nombre:/^\w+[a-zA-ZÀ-ÿ\s]+$/,
@@ -23,6 +25,7 @@ const expresiones={
     correo:/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
     telefono_alternativo:/^(\W?(591)[\s-])?\d{1,3}([\s-]\d{1,7}){1,3}$/,
     direccion:/^[A-Za-z0-9]+[+a-zA-Z0-9\s,]+\.?[A-Za-z\s.,]+$/,
+
 }
 
 const mensajesError={
@@ -37,12 +40,13 @@ const mensajesError={
 }
 
 const handleSubmit=(e)=>{
-    e.preventDefault();
+    e.preventDefault();    
+    let path="unidad/crear-unidad";
+
     if( nombre.valido==='true'&&
         abreviatura.valido==='true'&&
         telefono.valido==='true'&&
         sitio_web.valido==='true' &&
-        correo.valido==='true'&&
         direccion.valido==='true')
         {
             setValido(true);
@@ -53,26 +57,35 @@ const handleSubmit=(e)=>{
                 "sitio_web":sitio_web.campo,
                 "correo":correo.campo,
                 "telefono_alternativo":telefono_alternativo.campo,
-                "direccion":direccion.campo,
-                "responsable":responsable.campo
+                "direccion":direccion.campo            
             }
-            
-                API.post("/crear-unidad",body).then(res=>{
-                }).catch(err => console.log(err))
-            
+            try {
+                API.post(path,body)
+                .then(
+                    console.log("registro exitoso")
+                )
+            } catch (error) {
+                console.log("No se ha podido registrar unidad")
+            }                       
             
         }else{
             setValido(false);
         }
 }
 
+// function listaUsuarios(){    
+//     API.get("/listar-usuarios").then(res=>{
+//         setLista([res]);
+//     })
+// }
+
     return (         
         <>
-        <div className='position-relative '>
-        <div className='form-title'>                
+        <div >
+        <div>                
             <h3>Nueva Unidad</h3>       
         </div>                 
-        <div className='container justify-content-md-center inputs-formulario'> 
+        <div > 
         
             <Form onSubmit={handleSubmit}>
             <div className='row align-items-center inputs-items mw-100'>
@@ -145,14 +158,22 @@ const handleSubmit=(e)=>{
                 expresion={expresiones.direccion}
                 mensaje={mensajesError.direccionError}
                 
-                />        
-            <div className="col-sm-6">
+                />
+            {/* <FieldSelect
+                etiqueta="Responsable"
+                porDefecto="Seleccione Responsable"
+                nombre="responsable"
+                estado={responsable}
+                setEstado={setResponsable}
+                opciones={lista}
+            />        
+            {/* <div className="col-sm-6">
             <Form.Label>Responsable a Cargo</Form.Label>
             <Form.Select  aria-label="Default select example">
                 <option>Seleccione Responsable</option>
-                <option value={"listaUsuarios"}>lista no disponible</option>                
+                {<option value={lista}>lista no disponible</option>}                
             </Form.Select>
-            </div>
+            </div> */}
             </div>                
             {formularioValido==='false' &&
                 <div className='bg-danger text-center m-3'>

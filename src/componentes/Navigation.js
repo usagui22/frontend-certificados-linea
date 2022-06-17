@@ -9,7 +9,7 @@ export default class Navigation extends Component {
   render() {
     return (
       <div>
-        <Navbar className='navbar navbar-expand navbar-light fixed-top' variant='dark' >
+        <Navbar className='navbar navbar-expand navbar-light fixed-top' >
             <Container className='nav'>                
                 <div className="nav-brand">
                 <Logo/>

@@ -38,11 +38,11 @@ export const FormUsuario = ()=>{
         //     Ingresar Usuario
         // </div>
         <>
-        <div className='position-relative '>
-        <div className='form-title'>                
+        <div >
+        <div>                
             <h3>Nuevo Usuario</h3>       
         </div>                 
-        <div className='container justify-content-md-center inputs-formulario'> 
+        <div > 
         
             <Form onSubmit={handleSubmit}>
             <div className='row align-items-center inputs-items mw-100'>
@@ -93,7 +93,7 @@ export const FormUsuario = ()=>{
                 />    
             <FieldContent 
                 etiqueta="Password" 
-                tipo="text" 
+                tipo="password" 
                 name="password" 
                 estado={password}
                 setEstado={setPassword}
