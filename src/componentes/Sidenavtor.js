@@ -43,7 +43,6 @@ const Sidenavtor = () => {
       </div>
       </>
     )
-  
-}
+  }
 
 export default Sidenavtor;
