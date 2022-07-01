@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Button, Form, FormControl, FormLabel } from "react-bootstrap";
 import FieldContent from "../../componentes/FieldContent";
 import { API } from "../../conexiones/Conexion";
@@ -125,8 +125,9 @@ const EditarUsuario =()=>{
                 <div>
                     <h3>Actualizar Usuario</h3>
                 </div>
-                <div className="">
+                <div >
                     <Form  onSubmit={handleSubmit}>
+                    <div className='row align-items-center inputs-items mw-100'>
                         <FieldContent
                             etiqueta="Nombres"
                             tipo="text"
@@ -281,6 +282,7 @@ const EditarUsuario =()=>{
                             expresion={expresion.password}
                             mensaje={mensajes.password}
                         />
+                        </div>
                         <div>
                             <Button className='btn btn-primary m-1 col-sm-2' type="submit">Crear</Button>                
                             <Button className='btn btn-primary m-1 col-sm-2' type="reset">Reset</Button>                

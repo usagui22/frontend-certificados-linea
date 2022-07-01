@@ -12,10 +12,12 @@ export const ListaDocumento =()=>{
       </div>
       <div className='btn-crear'>
         <Button className='btn col-me-2 m-1'>
-          <Link to={"/FormDocumento"} className="text-light text">Crear Certificado</Link>
+          <Link to={"/FormDocumento"} className="text-light text">Crear Certificado
+          </Link>
         </Button>  
         <Button className='btn col-ms-2 m-1'>
-          <Link to={"/VerCertificado"} className="text-light text">Ver Certificado</Link>
+          <Link to={"/VerCertificado"} className="text-light text">Ver Certificado
+          </Link>
         </Button>                
       </div>
 

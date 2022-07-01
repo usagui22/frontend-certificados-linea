@@ -113,8 +113,7 @@ const handleSubmit=(e)=>{
         <div>                
             <h3>Nueva Unidad</h3>       
         </div>                 
-        <div > 
-        
+        <div >         
             <Form onSubmit={handleSubmit} >
             <div className='row align-items-center inputs-items mw-100'>
             <FieldContent 

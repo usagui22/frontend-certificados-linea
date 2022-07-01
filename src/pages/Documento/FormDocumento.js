@@ -1,8 +1,29 @@
-import React from "react";
-import { Button, Form, FormSelect as Select} from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Button, Form, FormLabel, FormSelect} from "react-bootstrap";
 import { FieldGenerator } from "../../componentes/FieldGenerator";
+import { API } from "../../conexiones/Conexion";
 
 export const FormDocumento=()=>{
+    const [lista,setLista]=useState([]);
+
+    const cargarParticipantes= async() =>{
+        let path="usuario/listar-participantes";
+        // console.log("ingresando a carga de datos")
+        try {                         
+            const res = await API.get(path)
+            // console.log("cargando datos a la lista")
+            setLista(res.data);
+                                 
+        } catch (error) {
+            // console.log("Lista de usuarios no encontrada")
+        }
+        
+    }
+
+    useEffect(()=>{
+        cargarParticipantes();
+    },[]);
+
     return(
         <>
         <div>
@@ -11,12 +32,22 @@ export const FormDocumento=()=>{
         <div>
             <Form>
             <div className="lista-usuarios">
-            <Select aria-label="Default select example">
-                <option>Seleccione Usuario: </option>
-                <option value="1">Usuario 1</option>
+                <FormLabel>Seleccionar Participante: </FormLabel>
+            <FormSelect>
+                <option>Seleccione Participante </option>
+                {/*<option value="1">Usuario 1</option>
                 <option value="2">Usuario 2</option>
-                <option value="3">...</option>
-            </Select>            
+                <option value="3">...</option> */}
+                {lista.map((participante,k)=>{
+                    return(
+                    <option key={k} value={participante.id}>
+                        {participante.nombres}  
+                         {participante.apellido_paterno}  
+                         {participante.apellido_materno}
+                    </option>
+                    )}
+                )}
+            </FormSelect>            
             </div>
             <div className="hash-confirmado-valido">                
                 <FieldGenerator

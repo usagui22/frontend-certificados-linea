@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { BotonEditar, BotonEliminar } from "../../componentes/Botones";
 import { API } from "../../conexiones/Conexion";
 
 export const ListaUsuario = () => {
@@ -60,15 +61,11 @@ export const ListaUsuario = () => {
               <td>{usu.id_rol}</td>        
               <td>{usu.ci}</td>  
               <td>
+                <BotonEditar direccionEditar={"/editarUsuario"}/>
                 
-                <Button >
-                  <Link className="text-light text" to={"/editarUsuario"}>Editar</Link>                      
-                </Button>   
-                </td>                           
-                <td>
-                <Button className="ml-2">
-                  <Link className="text-light text" to={"/eliminarUsuario"}>Eliminar</Link>                      
-                </Button>                
+              </td>                           
+              <td>
+                <BotonEliminar direccionEliminar={"/eliminarUsuario"}/>  
               
               </td>              
             </tr>)

@@ -66,16 +66,16 @@ export default function FormPlantilla(){
         <div>
             <Form>
                 <div>
-                <FormLabel>Tipo de documento</FormLabel>
+                <FormLabel>Tipo de documento: </FormLabel>
                 <Form.Select aria-label="Default select example" onClick={validarOpcion}>
-                    <option>Seleccione un tipo</option>
+                    <option>Seleccione </option>
                     <option value="1">Aprobación</option>
                     <option value="2">Participación</option>
                     <option value="3">Docente Expositor</option>
                 </Form.Select>
                 </div>
                 <FieldContent
-                    etiqueta="descripcion"
+                    etiqueta="Descripcion"
                     tipo="text"
                     estado={descripcion}
                     setEstado={setDescripcion}
@@ -83,7 +83,7 @@ export default function FormPlantilla(){
                     mensaje={"El campo solo permite caracteres alfanumericos y terminar en ."}
                 />
                 <div>
-                <FormLabel>Seleccione archivo</FormLabel>    
+                <FormLabel>Seleccione Archivo: </FormLabel>    
                 <Form.Group controlId="formFile" className="mb-3">                    
                     <Form.Control type="file" onChange={e=>(e.target.files)}/>
                 </Form.Group>

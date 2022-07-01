@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Button, FormCheck as Check, FormControl, FormLabel, Table } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { FormCheck as Check, FormControl, FormLabel, Table } from "react-bootstrap";
+// import { Link } from "react-router-dom";
+import { BotonBuscar, BotonGuardarAsinacion } from "../../componentes/Botones";
 
 import { API } from "../../conexiones/Conexion";
 
@@ -50,8 +51,7 @@ export const ListaUsuarioUnidad = (props) => {
     setResponsable({...responsable, id_usuario:event.target.value});
     if(responsable){
       try {
-        let path="unidad/cambiar-responsable/";
-        
+                
         API.get("unidad/cambiar-responsable/?id_resp="+responsable.id_usuario+"&id_uni="+props.uni_resp).then(
           console.log("La unidad cambio de responsable")
         )
@@ -75,22 +75,14 @@ export const ListaUsuarioUnidad = (props) => {
         <h3>LISTA DE USUARIOS REGISTRADOS</h3>      
       </div>
       <div className="col-sm-6 p-2">
+        <div>
         <FormLabel>Busqueda de Usuario</FormLabel>
-        <FormControl  value={carnet} placeholder="Ingrese un numero de carnet" onChange={handleChange}/>
-        <Button onClick={handleChange}>
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-search" viewBox="0 0 16 16">
-          <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-        </svg>
-        </Button>
-      
-        <Button className="m-2">
-          <Link  className="text-light text" to={"/Unidad"}>
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-box-arrow-in-left" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0v-2z"/>
-            <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
-          </svg>
-          </Link>
-        </Button>
+        <FormControl  value={carnet} placeholder="Ingrese un numero de carnet" onChange={handleChange}/>        
+        <BotonBuscar funcion={handleChange}/>        
+
+        </div>
+        <BotonGuardarAsinacion direccionGuardar={"/Unidad"}/>
+          
       </div>
       <div className='table-responsive'>
       <Table responsive  className='table table-bordered'>
