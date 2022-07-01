@@ -35,9 +35,9 @@ const Sidenavtor = () => {
             <Item className='caja-item'>
             <Link to={"/Plantilla"} className="text-light text">PLANTILLAS</Link>
             </Item>
-            <Item className='caja-item'>
+            {/* <Item className='caja-item'>
             <Link to={"/Roles"} className="text-light text">RESPONSABLES</Link>
-            </Item>
+            </Item> */}
         </ListGroup>
         </div>
       </div>

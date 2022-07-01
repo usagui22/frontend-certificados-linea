@@ -1,5 +1,4 @@
 
-<<<<<<< HEAD
 import axios from "axios";
 import { API } from "./Conexion";
 
@@ -28,7 +27,6 @@ export const servicios ={
         axios.post(API)
     )
 }
-=======
 //import { API_REST } from "./Conexion";
 
 // export function servicios (){    
@@ -43,5 +41,4 @@ export const servicios ={
 //         })
 //     )
 // }
->>>>>>> 9043e3aa1578025865f36919d638e8e23bbc5fe3
 

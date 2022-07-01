@@ -3,23 +3,27 @@ import { FormControl, FormGroup, FormLabel, FormText } from "react-bootstrap";
 
 
  const FieldContent=(props)=>{    
-    const {etiqueta, name,tipo,pholder,estado, setEstado,id,expresion,mensaje}=props;
+    const {etiqueta, name,tipo,pholder,estado, setEstado,id,expresion,mensaje, funcion}=props;
 
     function handleChange(e){
-        console.log(e.target.value);
+        // console.log(e.target.value);
         setEstado({...estado, campo:e.target.value})
     }
     function validate(){
-        console.log(expresion);
+        // console.log(expresion);
         if(expresion){
             if(expresion.test(estado.campo)){
-                console.log(expresion.test(estado.campo))
+                // console.log(expresion.test(estado.campo))
                 console.log("input correcto");
                 setEstado({...estado,valido:'true'});
             }else{
                 console.log("input incorrecto");
                 setEstado({...estado,valido:'false'});
             }
+        }
+
+        if(funcion){
+            funcion();
         }
     }
 

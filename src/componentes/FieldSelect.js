@@ -3,11 +3,11 @@ import { FormLabel, FormText } from "react-bootstrap";
 import Select from "react-select";
 
 export const FieldSelect =(props)=>{
-    const {nombre, porDefecto, etiqueta, expresion, mensajeError, estado, setEstado, opciones}=props;  
+    const {nombre, porDefecto, etiqueta, estado, opciones}=props;  
 
-    function onChange(evt){
-        setEstado({...estado, campo:evt.target.value});
-    }
+    // function onChange(evt){
+    //     setEstado({...estado, campo:evt.target.value});
+    // }
 
     function validarSelect(evt){
         let esValido=false;
@@ -33,7 +33,7 @@ export const FieldSelect =(props)=>{
                 name={nombre}
                 options={opciones}
                 value={validarSelect}                
-                onClick={onChange}
+                
                 placeholder={porDefecto}                
             />            
             {validarSelect.esValido?<FormText>{mensajeError}</FormText>:''}

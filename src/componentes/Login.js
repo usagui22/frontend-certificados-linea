@@ -1,6 +1,7 @@
 //import axios from 'axios';
 import React, { Component } from 'react';
 import { Button, Form} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 
 export default class Login extends Component {
@@ -59,7 +60,13 @@ export default class Login extends Component {
               onChange={(e)=>(this.pass_usuario = e.target.value)}                                              
               />                                                
             </Form.Group>                                        
-        <Button className='mt-3 align-content-lg-center' type="submit">Ingresar</Button>
+        <div>
+          <Button className='mt-3 align-content-lg-center' type="submit">Ingresar</Button>
+          <Button className='mt-3 align-content-lg-center' type="submit">
+            <Link to={"/FormUsuario"}>Registrarse</Link>            
+            </Button>      
+            
+        </div>
       </Form>      
       
     )

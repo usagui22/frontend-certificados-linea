@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import FieldContent from '../../componentes/FieldContent';
 import { Form, Button, FormText } from 'react-bootstrap';
 import { API } from '../../conexiones/Conexion';
+import { Link } from 'react-router-dom';
+// import { FieldSelect } from '../../componentes/FieldSelect';
 
 
-export default function FormUni (){    
+const FormUnidad =()=>{    
 
 const [nombre,setNombre]=useState({campo:"",valido:null});
 const [abreviatura,setAbreviatura]=useState({campo:"",valido:null});
@@ -13,9 +15,17 @@ const [sitio_web,setSitio_Web]=useState({campo:"",valido:null});
 const [correo,setCorreo]=useState({campo:"",valido:null});
 const [telefono_alternativo,setTelefono_Alternativo]=useState({campo:"",valido:null});
 const [direccion,setDireccion]=useState({campo:"",valido:null});
-
+//const [responsables,setResponsables]=useState([]);
 const [formularioValido,setValido]=useState(null);
-
+const [body,setBody]=useState({
+    nombre:'',
+    abreviacion:'',
+    telefono:'',
+    sitio_web:'',
+    correo:'',
+    telefono_alternativo:'',
+    direccion:''
+});
 
 const expresiones={
     nombre:/^\w+[a-zA-ZÀ-ÿ\s]+$/,
@@ -23,7 +33,7 @@ const expresiones={
     telefono:/^\W?(591)[\s-]\d{1,3}([\s-]\d{1,7}){1,3}$/,
     sitio_web:/^(http+s?:\/\/)?(www\.)?[a-zA-Z.-]+\.[A-Za-z0-9./-]+$/,
     correo:/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-    telefono_alternativo:/^(\W?(591)[\s-])?\d{1,3}([\s-]\d{1,7}){1,3}$/,
+    // telefono_alternativo:/^(\W?(591)[\s-])?\d{1,3}([\s-]\d{1,7}){1,3}$/,
     direccion:/^[A-Za-z0-9]+[+a-zA-Z0-9\s,]+\.?[A-Za-z\s.,]+$/,
 
 }
@@ -34,14 +44,29 @@ const mensajesError={
     telefonoError:"El campo solo permite numeros 0-9 y los simbolos - +",
     sitio_webError:"El campo solo permiten caracteres alfanumericos y simbolos .-_/ ",
     correoError:"EL campo solo permite caracteres alfanumericos y simbolos .-_@",
-    telefono_alternativoError:"El campo solo permite numeros 0-9 y los simbolos - +",
+    // telefono_alternativoError:"El campo solo permite numeros 0-9 y los simbolos - +",
     direccionError:"El campo solo permite caracteres alfanumericos y simbolos ./:",
     
 }
 
+// useEffect(()=>{
+//     cargarResponsables()
+// },[]);
+
+// const cargarResponsables= async ()=>{
+//     let path="unidad/listar-responsables";
+//     try {
+//         const lista= await API.get(path)
+//         setResponsables(lista.data)
+//         console.log(lista)
+//     } catch (error) {
+//         console.log("Los usuarios no se han encontrado");
+//     }    
+// }
+
 const handleSubmit=(e)=>{
     e.preventDefault();    
-    let path="unidad/crear-unidad";
+    // let path="unidad/crear-unidad";
 
     if( nombre.valido==='true'&&
         abreviatura.valido==='true'&&
@@ -50,19 +75,22 @@ const handleSubmit=(e)=>{
         direccion.valido==='true')
         {
             setValido(true);
-            const body ={
-                "nombre":nombre.campo,
-                "abreviatura":abreviatura.campo,
-                "telefono":telefono.campo,
-                "sitio_web":sitio_web.campo,
-                "correo":correo.campo,
-                "telefono_alternativo":telefono_alternativo.campo,
-                "direccion":direccion.campo            
-            }
+            setBody({
+                nombre:nombre.campo,
+                abreviacion: abreviatura.campo,
+                telefono:telefono.campo,
+                sitio_web:sitio_web.campo,
+                correo:correo.campo,
+                telefono_alternativo:telefono_alternativo.campo,
+                direccion:direccion.campo
+            })
+            
+            console.log(body);
             try {
-                API.post(path,body)
-                .then(
-                    console.log("registro exitoso")
+                
+                API.post('unidad/crear-unidad',body)
+                .then(                    
+                    console.log("ingresando a post")
                 )
             } catch (error) {
                 console.log("No se ha podido registrar unidad")
@@ -87,7 +115,7 @@ const handleSubmit=(e)=>{
         </div>                 
         <div > 
         
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit} >
             <div className='row align-items-center inputs-items mw-100'>
             <FieldContent 
                 etiqueta="Nombre" 
@@ -145,9 +173,8 @@ const handleSubmit=(e)=>{
                 name="telefono_alternativo" 
                 estado={telefono_alternativo}
                 setEstado={setTelefono_Alternativo}
-                expresion={expresiones.telefono_alternativo}
-                mensaje={mensajesError.telefono_alternativoError}
-                
+                // expresion={expresiones.telefono_alternativo}
+                // mensaje={mensajesError.telefono_alternativoError}                
                 />
             <FieldContent 
                 etiqueta="Ubicacion" 
@@ -162,18 +189,21 @@ const handleSubmit=(e)=>{
             {/* <FieldSelect
                 etiqueta="Responsable"
                 porDefecto="Seleccione Responsable"
-                nombre="responsable"
-                estado={responsable}
-                setEstado={setResponsable}
-                opciones={lista}
-            />        
+                nombre="responsable"                           
+                opciones={responsables}
+            />         */}
             {/* <div className="col-sm-6">
             <Form.Label>Responsable a Cargo</Form.Label>
             <Form.Select  aria-label="Default select example">
                 <option>Seleccione Responsable</option>
-                {<option value={lista}>lista no disponible</option>}                
+
+                {responsables.map(responsable=>(
+
+                    <option value={responsable.id}>{responsable.nombres} {responsable.apellido_paterno} {responsable.apellido_materno}</option>
+                    ))
+                }                
             </Form.Select>
-            </div> */}
+            </div>  */}
             </div>                
             {formularioValido==='false' &&
                 <div className='bg-danger text-center m-3'>
@@ -184,7 +214,9 @@ const handleSubmit=(e)=>{
                 </div>}
             <div className='row align-items-center p-3'>                
                 <Button className='btn btn-primary m-1 col-sm-2' type="submit">Crear</Button>                
-                <Button className='btn btn-primary m-1 col-sm-2' type="reset">Reset</Button>                
+                <Button className='btn btn-primary m-1 col-sm-2' type="cancel">
+                <Link className="text-light text" to={"/Unidad"}>Cancelar</Link>    
+                </Button>                
                 
             </div>    
             </Form>
@@ -195,3 +227,5 @@ const handleSubmit=(e)=>{
     );
   
 }
+
+export default FormUnidad;

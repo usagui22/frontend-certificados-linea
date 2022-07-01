@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { API } from "../../conexiones/Conexion";
 
 export const ListaRol=()=>{
+
+  const [responsables, setResponsables]=useState([]);
+  
+  const cargarResponsable =async()=>{
+    let path="usuario/listar-responsables";
+    try {
+      const resp= await API.get(path)
+      setResponsables(resp.data)
+    } catch (error) {
+      console.log("No se encuentran responsables de unidad")
+    }
+  }
     return(
         <>
         {/* <Lista titulos={etiquetas}/> */}
@@ -23,25 +36,24 @@ export const ListaRol=()=>{
             <th>#</th>
             <th>Unidad</th>
             <th>Usuario</th>
-            <th>Permisos</th>
+            <th>Cargo</th>
             <th>Opciones</th>   
           </tr>
         </thead>
         <tbody>
-          {/* { plantilla.map((pla, k)=>{
-            <tr key={k}>
-              <td>{columnas de rol.id}</td>
-              <td>{pla.nombre}</td>
-              <td>{pla.descripcion}</td>
-              <td>{pla.plantilla}</td>
+          { responsables.map((res)=>{
+            return(
+            <tr key={res.id}>
+              <td>{res.id}</td>
+              <td>{res.nombres}</td>
+              <td>{res.apellido_paterno}</td>
+              <td>{res.apellido_materno}</td>
+              <td>{res.id_rol}</td>
               <td>
-
-              </td>
-              <td>
-
+                
               </td>              
-            </tr>
-          })} */}
+            </tr>);
+          })}
         </tbody>
       </Table>
       </div>

@@ -25,7 +25,7 @@ export const ListaUsuario = () => {
         {/* <Lista titulos={etiquetas}/> */}
         <>
       <div className='titulo'>
-        <h3>LISTA DE USUARIOS REGISTRADOS</h3>      
+        <h3>LISTA DE USUARIOS</h3>      
       </div>
       <div className='btn-crear'>
         <Button className="btn me-2 m-1">
@@ -45,7 +45,8 @@ export const ListaUsuario = () => {
             <th>Apellido Paterno</th>
             <th>Apellido Materno</th>            
             <th>Correo Electronico</th>            
-            
+            <th>Cargo</th>
+            <th>CI</th>
           </tr>
         </thead>
         <tbody>
@@ -55,7 +56,9 @@ export const ListaUsuario = () => {
               <td>{usu.nombres}</td>
               <td>{usu.apellido_paterno}</td>
               <td>{usu.apellido_materno}</td>
-              <td>{usu.correo}</td>              
+              <td>{usu.correo}</td>    
+              <td>{usu.id_rol}</td>        
+              <td>{usu.ci}</td>  
               <td>
                 
                 <Button >
